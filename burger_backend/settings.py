@@ -117,11 +117,14 @@ MIDDLEWARE = [
 
 # CORS Configuration
 CORS_ALLOW_ALL_ORIGINS = True
-
-# Database Configuration
+# Update this line with the external URL provided by Render
 DATABASES = {
-    'default': dj_database_url.config(default=f'sqlite:///{BASE_DIR / "db.sqlite3"}')
+    'default': dj_database_url.config(default='postgresql://dandy_takilu_user:AVHdqZCh8L7sFuCFgNCPnOHPqQgLcBvV@dpg-cts5fabtq21c7396mde0-a.oregon-postgres.render.com:5432/dandy_takilu')
 }
+
+# Optionally set other database settings
+DATABASES['default']['ATOMIC_REQUESTS'] = True
+DATABASES['default']['CONN_MAX_AGE'] = 600  # Keep the connection open for up to 10 minutes
 
 # Static and Media Files Configuration
 STATIC_URL = '/static/'

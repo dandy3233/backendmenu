@@ -1,16 +1,17 @@
 {
     "version": 2,
     "builds": [
-      { "src": "manage.py", "use": "@vercel/python" },
-      { "src": "static/**/*", "use": "@vercel/static" }
+        { "src": "manage.py", "use": "@vercel/python" }
     ],
     "routes": [
-      { "src": "/static/(.*)", "dest": "/static/$1" },
-      { "src": "/(.*)", "dest": "manage.py" }
+        { "src": "/static/(.*)", "dest": "/static/$1" },
+        { "src": "/(.*)", "dest": "/manage.py" }
     ],
     "env": {
-      "DJANGO_SETTINGS_MODULE": "burger_backend.settings",
-      "PYTHONUNBUFFERED": "1"
+        "DJANGO_SETTINGS_MODULE": "burger_backend.settings",
+        "PYTHONUNBUFFERED": "1",
+        "DJANGO_SECRET_KEY": "your-secret-key",
+        "DJANGO_DEBUG": "false",
+        "DJANGO_ALLOWED_HOSTS": "backendmenu-amee.vercel.app"
     }
-  }
-  
+}
