@@ -17,6 +17,4 @@ services:
         value: "your-backend-domain.com"
       - key: DATABASE_URL
         sync: false
-    disk:
-      sizeGB: 1
     healthCheckPath: /
