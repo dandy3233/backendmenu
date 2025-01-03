@@ -118,13 +118,18 @@ MIDDLEWARE = [
 # CORS Configuration
 CORS_ALLOW_ALL_ORIGINS = True
 # Update this line with the external URL provided by Render
+
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql://dandy_takilu_user:AVHdqZCh8L7sFuCFgNCPnOHPqQgLcBvV@dpg-cts5fabtq21c7396mde0-a.oregon-postgres.render.com:5432/dandy_takilu')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dandy_takilu',
+        'USER': 'dandy_takilu_user',
+        'PASSWORD': 'AVHdqZCh8L7sFuCFgNCPnOHPqQgLcBvV',
+        'HOST': 'dpg-cts5fabtq21c7396mde0-a.oregon-postgres.render.com',
+        'PORT': '5432',
+    }
 }
 
-# Optionally set other database settings
-DATABASES['default']['ATOMIC_REQUESTS'] = True
-DATABASES['default']['CONN_MAX_AGE'] = 600  # Keep the connection open for up to 10 minutes
 
 # Static and Media Files Configuration
 STATIC_URL = '/static/'
