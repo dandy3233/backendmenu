@@ -1,0 +1,22 @@
+services:
+  - name: django-backend
+    type: web
+    env: python
+    buildCommand: 
+      - pip install -r requirements.txt
+      - python manage.py collectstatic --noinput
+      - python manage.py migrate
+    startCommand: gunicorn burger_backend.wsgi:application
+    plan: free
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        sync: false
+      - key: DJANGO_DEBUG
+        value: false
+      - key: DJANGO_ALLOWED_HOSTS
+        value: your-backend-domain.com
+      - key: DATABASE_URL
+        sync: false
+    disk:
+      sizeGB: 1
+    healthCheckPath: /
